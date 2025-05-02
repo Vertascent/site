@@ -1,14 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>AdrianHV</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Adrian HV</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      font-size: 2em;
+    }
+    .button {
+      display: block;
+      margin: 20px auto;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      cursor: pointer;
+      background-color: #444;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover {
+      background-color: #666;
+    }
+    .timestamp {
+      margin-top: 60px;
+      color: #555;
+      font-size: 0.9em;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to AdrianHV</h1>
-  <button onclick="goTo('tutoring')">Request Tutoring</button>
-  <button onclick="goTo('videos')">Watch Videos</button>
-  <button onclick="goTo('files')">Access Files</button>
-  <script src="script.js"></script>
+  <h1>Welcome to Adrian's website</h1>
+  
+  <button class="button" onclick="window.location.href='https://www.youtube.com/@AdriansAcademics'">YouTube</button>
+  
+  <button class="button" onclick="window.location.href='https://pcsb-my.sharepoint.com/:f:/g/personal/adrianh29_mypolkschools_net/Eh3ZOMXAL2tIiv1Konwo0A4BTKlEBM4X5n59zPzEmxFvQQ?e=WzSku2'">Resources</button>
+  
+  <button class="button" onclick="alert('I won\'t be available during AP season! I\'ll update this button later.')">Tutoring</button>
+
+  <div class="timestamp">05/01/25 — Website launched!</div>
 </body>
 </html>
