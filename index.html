@@ -1,105 +1,68 @@
-<!DOCTYPE html>More actions
-
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
-
   <title>Adrian HV</title>
-
   <style>
-
     body {
-
       font-family: Arial, sans-serif;
-
       text-align: center;
-
       margin-top: 100px;
-
       background-color: #f4f4f4;
-
     }
 
     h1 {
-
       font-size: 2em;
-
     }
 
     .button {
-
       display: block;
-
       margin: 20px auto;
-
       padding: 15px 30px;
-
       font-size: 1.2em;
-
       cursor: pointer;
-
       background-color: #444;
-
       color: white;
-
       border: none;
-
       border-radius: 10px;
-
       transition: background-color 0.3s ease;
-
     }
 
     .button:hover {
-
       background-color: #666;
-
     }
 
     .timestamp {
-
       margin-top: 60px;
-
       color: #555;
-
       font-size: 0.9em;
-
     }
-
   </style>
-
 </head>
 
 <body>
+  <!-- Load shared navbar -->
+  <div id="navbar"></div>
+  <script>
+    fetch('/navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
 
   <h1>Welcome to Adrian's website</h1>
 
-
-
   <button class="button" onclick="window.location.href='https://www.youtube.com/@AdriansAcademics'">YouTube</button>
-
-
 
   <button class="button" onclick="window.location.href='https://pcsb-my.sharepoint.com/:f:/g/personal/adrianh29_mypolkschools_net/Eh3ZOMXAL2tIiv1Konwo0A4BTKlEBM4X5n59zPzEmxFvQQ?e=WzSku2'">Resources</button>
 
-
-
-
-  <button class="button" onclick="window.location.href='https://cal.com/cochleoid/1-hour-quick-call?overlayCalendar=true">Tutoring</button>
-
-
   <button class="button" onclick="window.location.href='https://cal.com/cochleoid/1-hour-quick-call?overlayCalendar=true'">Tutoring</button>
-
-
 
   <button class="button" onclick="location.href='links.html'">Links</button>
 
-
-
   <div class="timestamp">05/01/25 — Website launched!</div>
-
 </body>
 
 </html>
