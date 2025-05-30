@@ -1,0 +1,97 @@
+<!-- navbar.html -->
+<style>
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 1rem;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .navbar h1 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .hamburger {
+    cursor: pointer;
+    display: block;
+  }
+
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #444;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+  }
+
+  .nav-links a {
+    color: white;
+    padding: 1rem;
+    text-decoration: none;
+    border-bottom: 1px solid #555;
+  }
+
+  .nav-links a:hover {
+    background-color: #555;
+  }
+
+  .nav-open {
+    display: flex;
+  }
+
+  @media (min-width: 768px) {
+    .hamburger {
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: row;
+      position: static;
+      width: auto;
+      background-color: transparent;
+    }
+
+    .nav-links a {
+      border: none;
+      padding: 0 1rem;
+    }
+  }
+</style>
+
+<div class="navbar">
+  <h1>My Website</h1>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="/index.html">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    nav.classList.toggle("nav-open");
+  }
+</script>
