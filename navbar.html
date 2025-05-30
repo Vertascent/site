@@ -1,4 +1,12 @@
 <style>
+  /* Remove body margin/padding to flush navbar to top */
+  body {
+    margin: 0;
+    padding: 0;
+    padding-top: 60px; /* height of navbar to push content down */
+    font-family: Arial, sans-serif;
+  }
+
   nav {
     position: fixed;
     top: 0;
@@ -11,6 +19,7 @@
     justify-content: space-between;
     align-items: center;
     z-index: 999;
+    margin: 0;
   }
 
   .menu-toggle {
