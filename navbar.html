@@ -1,197 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adrian HV - Minimal Navigation</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 60px 0 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #333;
-      text-align: center;
+<style>
+  body { margin: 0; padding: 60px 0 0; font-family: Arial, sans-serif; }
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%; background: #222; 
+    color: white; padding: 1rem; display: flex; justify-content: space-between; 
+    align-items: center; z-index: 999;
+  }
+  .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
+  .menu-toggle span { height: 3px; width: 25px; background: white; margin: 4px 0; }
+  .nav-links { display: flex; gap: 1rem; }
+  .nav-links a { 
+    color: white; text-decoration: none; white-space: nowrap; 
+    max-width: 100px; overflow: hidden; text-overflow: ellipsis; 
+  }
+  @media (max-width: 600px) {
+    .nav-links { 
+      display: none; flex-direction: column; background: #333; 
+      position: absolute; top: 60px; right: 0; padding: 1rem; 
     }
-    
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: #222;
-      color: white;
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 999;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-    
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      padding: 8px;
-    }
-    
-    .menu-toggle span {
-      height: 3px;
-      width: 25px;
-      background: white;
-      margin: 4px 0;
-    }
-    
-    .nav-links {
-      display: flex;
-      gap: 1rem;
-    }
-    
-    .nav-links a, .home-link {
-      color: white;
-      text-decoration: none;
-      white-space: nowrap;
-      padding: 5px 10px;
-      border-radius: 3px;
-      transition: background 0.2s;
-    }
-    
-    .nav-links a:hover {
-      background: #444;
-    }
-    
-    .home-link {
-      font-weight: bold;
-    }
-    
-    @media (max-width: 600px) {
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        background: #333;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        padding: 1rem;
-        width: 200px;
-      }
-      
-      .nav-links.active {
-        display: flex;
-      }
-      
-      .menu-toggle {
-        display: flex;
-      }
-    }
-    
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-    
-    h1 {
-      margin-top: 0;
-      color: #222;
-    }
-    
-    .demo-box {
-      background: white;
-      border-radius: 8px;
-      padding: 2rem;
-      margin: 2rem 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    
-    .code-block {
-      background: #222;
-      color: #f5f5f5;
-      padding: 1rem;
-      border-radius: 4px;
-      text-align: left;
-      font-family: monospace;
-      font-size: 14px;
-      overflow-x: auto;
-    }
-  </style>
-</head>
-<body>
-  <nav>
-    <a href="/" class="home-link">Adrian HV</a>
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="nav-links" id="navLinks">
-      <!-- Links will be added by JavaScript -->
-    </div>
-  </nav>
+    .nav-links.active { display: flex; }
+    .menu-toggle { display: flex; }
+  }
+</style>
 
-  <div class="container">
-    <h1>Minimal Navigation Solution</h1>
-    
-    <div class="demo-box">
-      <p>The navigation bar is fully functional with JavaScript-generated links.</p>
-      <p>Resize your browser to see the mobile menu in action.</p>
-    </div>
-    
-    <div class="demo-box">
-      <h2>JavaScript Solution</h2>
-      <div class="code-block">
-// Define navigation links
-const links = [
-  ["/links.html", "Links"],
-  ["/articles.html", "Articles"],
-  ["https://cal.com/cochleoid", "Tutoring"],
-  ["https://www.youtube.com/@AdriansAcademics", "YouTube"]
-];
-
-// Get nav container
-const navLinks = document.getElementById('navLinks');
-
-// Create and append links
-links.forEach(link => {
-  const a = document.createElement('a');
-  a.href = link[0];
-  a.textContent = link[1];
-  navLinks.appendChild(a);
-});
-
-// Toggle menu function
-function toggleMenu() {
-  navLinks.classList.toggle('active');
-}
-      </div>
-    </div>
+<nav>
+  <div>Adrian HV</div>
+  <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+    <span></span><span></span><span></span>
   </div>
+  <div class="nav-links"></div>
+</nav>
 
-  <script>
-    // Define navigation links
-    const links = [
-      ["/links.html", "Links"],
-      ["/articles.html", "Articles"],
-      ["https://cal.com/cochleoid", "Tutoring"],
-      ["https://www.youtube.com/@AdriansAcademics", "YouTube"]
-    ];
-    
-    // Get nav container
-    const navLinks = document.getElementById('navLinks');
-    
-    // Create and append links
-    links.forEach(link => {
-      const a = document.createElement('a');
-      a.href = link[0];
-      a.textContent = link[1];
-      navLinks.appendChild(a);
-    });
-    
-    // Toggle menu function
-    function toggleMenu() {
-      navLinks.classList.toggle('active');
-    }
-  </script>
-</body>
-</html>
+<script>
+  const links = [
+    ["/", "Home"],
+    ["/links.html", "Links"],
+    ["/articles.html", "Articles"],
+    ["https://cal.com/cochleoid", "Tutoring"],
+    ["https://www.youtube.com/@AdriansAcademics", "YouTube"],
+    ["https://google.com/", "                            "]
+  ];
+  
+  const navLinks = document.querySelector('.nav-links');
+  links.forEach(link => {
+    const a = document.createElement('a');
+    a.href = link[0];
+    a.textContent = link[1];
+    navLinks.appendChild(a);
+  });
+</script>
