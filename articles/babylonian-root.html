@@ -3,70 +3,135 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Babylonian Method for Square Roots</title>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <title>Sample Math Article</title>
+  
+  <!-- KaTeX CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+  <!-- KaTeX JS for auto-render -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body);"></script>
+
   <style>
     body {
       font-family: Georgia, serif;
-      background-color: #fdfdfd;
-      color: #222;
-      line-height: 1.7;
-      max-width: 700px;
-      margin: 4rem auto;
-      padding: 0 1rem;
+      line-height: 1.6;
+      max-width: 750px;
+      margin: 80px auto 2rem auto;
+      padding: 1rem;
+      background: #fdfdfd;
     }
 
     h1 {
       text-align: center;
-      font-size: 2rem;
-      margin-bottom: 2rem;
     }
 
-    p {
-      margin-bottom: 1.2rem;
+    .article {
+      background: white;
+      border-left: 4px solid #444;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
     }
 
     code {
-      background: #f4f4f4;
+      background: #eee;
       padding: 2px 4px;
-      border-radius: 3px;
-      font-family: monospace;
+      border-radius: 4px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #222;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #333;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        padding: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
     }
   </style>
 </head>
+
 <body>
+  <div id="navbar"></div>
+  <script>
+    fetch('/navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
 
-  <h1>The Babylonian Method for Square Roots</h1>
-  <p><em>Published June 1, 2025</em></p>
+  <h1>Using the Babylonian Method to Approximate √n</h1>
+  <div class="article">
+    <p>
+      The Babylonian method (also known as Heron's method) is a fast way to approximate the square root of a number \( n \).
+      It works by iterating the formula:
+    </p>
 
-  <p>
-    The Babylonian method (also known as Heron’s method) is an ancient algorithm for estimating
-    square roots. Given a number \( S \), you start with a guess \( x_0 \), and then iterate using:
-  </p>
+    <p style="text-align: center;">
+      \( x_{k+1} = \frac{1}{2} \left( x_k + \frac{n}{x_k} \right) \)
+    </p>
 
-  <p style="text-align: center; font-size: 1.2em;">
-    \( x_{n+1} = \frac{1}{2} \left( x_n + \frac{S}{x_n} \right) \)
-  </p>
+    <p>
+      Starting with an initial guess \( x_0 \), this sequence converges to \( \sqrt{n} \). For example, let's approximate \( \sqrt{10} \) starting with \( x_0 = 3 \):
+    </p>
 
-  <p>
-    For example, to approximate \( \sqrt{2} \), we might start with \( x_0 = 1 \). Applying the formula:
-  </p>
+    <ol>
+      <li>\( x_1 = \frac{1}{2} (3 + \frac{10}{3}) = \frac{1}{2} (3 + 3.\overline{3}) = 3.1666\ldots \)</li>
+      <li>\( x_2 = \frac{1}{2} (3.1666 + \frac{10}{3.1666}) \approx 3.1623 \)</li>
+    </ol>
 
-  <ul>
-    <li>\( x_1 = \frac{1}{2} (1 + \frac{2}{1}) = 1.5 \)</li>
-    <li>\( x_2 = \frac{1}{2} (1.5 + \frac{2}{1.5}) = 1.416\overline{6} \)</li>
-    <li>\( x_3 = \frac{1}{2} (1.4166 + \frac{2}{1.4166}) \approx 1.4142 \)</li>
-  </ul>
-
-  <p>
-    This converges incredibly fast. In fact, after just a few iterations, the result is accurate to many decimal places.
-  </p>
-
-  <p>
-    This method is essentially Newton's method applied to the function \( f(x) = x^2 - S \).
-  </p>
-
+    <p>
+      This method is efficient and often used in computer algorithms due to its rapid convergence.
+    </p>
+  </div>
 </body>
 </html>
