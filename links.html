@@ -15,7 +15,6 @@
 
     .block {
       --accent: #000;
-
       border-left: 5px solid var(--accent);
       background-color: white;
       padding: 1rem;
@@ -43,7 +42,8 @@
   </style>
 </head>
 <body>
- <!-- Load shared navbar -->
+
+  <!-- Load shared navbar -->
   <div id="navbar"></div>
   <script>
     fetch('/navbar.html')
@@ -52,54 +52,35 @@
         document.getElementById('navbar').innerHTML = data;
       });
   </script>
-  
-  <div class="block" style="--accent: #1e90ff;">
-    <h2>A-Team</h2>
-    <p>
-      A-Team is a fun and interactive competition that tests players on a wide variety of academic subjects. Practice will usually last until 4:15ish so plan a ride ahead of time!
-    </p>
-    <a href="https://t.me/+vF4i_CUN8oAwZGVh" target="_blank">Join the Telegram Group</a>
-  </div>
 
-  <div class="block" style="--accent: #1e90ff;">
-    <h2>DECA</h2>
-    <p>
-      DECA is an international competitive club that prepares students to become leaders in areas including business, marketing, finance, hospitality, and management, with such skills versatile for any field or major! The club allows students to participate in competitive events at the district, state, and international levels. Bartow DECA is also running a student-run school-based entrepreneurial operation, which provides community service and certification opportunities!
-    </p>
-    <a href="https://t.me/+2dvcXb9TSn02MGUx" target="_blank">Join the Telegram Group</a>
-  </div>
+  <div id="clubs-container"></div>
 
-  <div class="block" style="--accent: #145ac4;">
-    <h2>Key Club</h2>
-    <p>
-      Key Club is a service organization that provides a variety of community service opportunities at BHS throughout the year! If you are interested in serving your community with your peers, earning service hours, and gaining leadership experience make sure to clink the link below 🐝🔑<br>
-    </p>
-    <a href="https://t.me/+2dvcXb9TSn02MGUx" target="_blank">Join the Telegram Group</a>
-  </div>
+  <script>
+    const clubs = [
+      ["A-Team", "#1e90ff", "A-Team is a fun and interactive competition that tests players on a wide variety of academic subjects. Practice will usually last until 4:15ish so plan a ride ahead of time!", "https://t.me/+vF4i_CUN8oAwZGVh"],
+      ["DECA", "#1e90ff", "DECA is an international competitive club that prepares students to become leaders in areas including business, marketing, finance, hospitality, and management, with such skills versatile for any field or major! The club allows students to participate in competitive events at the district, state, and international levels. Bartow DECA is also running a student-run school-based entrepreneurial operation, which provides community service and certification opportunities!", "https://t.me/+2dvcXb9TSn02MGUx"],
+      ["Key Club", "#145ac4", "Key Club is a service organization that provides a variety of community service opportunities at BHS throughout the year! If you are interested in serving your community with your peers, earning service hours, and gaining leadership experience make sure to clink the link below 🐝🔑", "https://t.me/+2dvcXb9TSn02MGUx"],
+      ["Science Olympiad", "#9d4edd", "Science Olympiad is a competitive team focused on biology, chemistry, physics, engineering, math, and other disciplines. There are 23 events to participate in. Join us to explore STEM through hands-on events, problem-solving, and team challenges!", "https://t.me/+2dvcXb9TSn02MGUx"],
+      ["Mu Alpha Theta", "#e63946", "Mu Alpha Theta is a National Math Honor Society that provides students opportunities to participate in math contests and qualify for scholarships and awards. We are to have community service opportunities such as tutoring services.", "https://t.me/+Fi5bMAxA43swYmY5"],
+      ["National Spanish Exam", "#f4a261", "The National Spanish Exam is a written exam where you compete against others in your Spanish level for medals, awards, and scholarships. Natives compete in their own category.", "https://t.me/+JweYLJ32IGA5OTVh"]
+    ];
 
-  <div class="block" style="--accent: #9d4edd;">
-    <h2>Science Olympiad</h2>
-    <p>
-      Science Olympiad is a competitive team focused on biology, chemistry, physics, engineering, math, and other disciplines. There are 23 events to participate in. Join us to explore STEM through hands-on events, problem-solving, and team challenges!
-    </p>
-    <a href="https://t.me/+2dvcXb9TSn02MGUx" target="_blank">Join the Telegram Group</a>
-  </div>
+    const container = document.getElementById('clubs-container');
 
-  <div class="block" style="--accent: #e63946;">
-    <h2>Mu Alpha Theta</h2>
-    <p>
-      Mu Alpha Theta is a National Math Honor Society that provides students opportunities to participate in math contests and qualify for scholarships and awards. We are to have community service opportunities such as tutoring services.
-    </p>
-    <a href="https://t.me/+Fi5bMAxA43swYmY5" target="_blank">Join the Telegram Group</a>
-  </div>
+    for (const [name, color, desc, link] of clubs) {
+      const div = document.createElement('div');
+      div.className = 'block';
+      div.style.setProperty('--accent', color);
 
-  <div class="block" style="--accent: #f4a261;">
-    <h2>National Spanish Exam</h2>
-    <p>
-      The National Spanish Exam is a written exam where you compete against others in your Spanish level for medals, awards, and scholarships. Natives compete in their own category.
-    </p>
-    <a href="https://t.me/+JweYLJ32IGA5OTVh" target="_blank">Join the Telegram Group</a>
-  </div>
+      div.innerHTML = `
+        <h2>${name}</h2>
+        <p>${desc}</p>
+        <a href="${link}" target="_blank">Join the Telegram Group</a>
+      `;
+
+      container.appendChild(div);
+    }
+  </script>
 
 </body>
 </html>
