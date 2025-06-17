@@ -1,29 +1,80 @@
 <style>
-  body { margin: 0; padding: 60px 0 0; font-family: Arial, sans-serif; }
+  body {
+    margin: 0;
+    padding: 60px 0 0;
+    font-family: Arial, sans-serif;
+  }
+
   nav {
-    position: fixed; top: 0; left: 0; width: 100%; background: #222; 
-    color: white; padding: 1rem; display: flex; justify-content: space-between; 
-    align-items: center; z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #222;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
   }
-  .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
-  .menu-toggle span { height: 3px; width: 25px; background: white; margin: 4px 0; }
-  .nav-links { display: flex; gap: 1rem; }
-  .nav-links a { 
-    color: white; text-decoration: none; white-space: nowrap; 
-    max-width: 100px; overflow: hidden; text-overflow: ellipsis; 
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
   }
+
+  .menu-toggle span {
+    height: 3px;
+    width: 25px;
+    background: white;
+    margin: 4px 0;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    white-space: nowrap;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .brand {
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+  }
+
   @media (max-width: 600px) {
-    .nav-links { 
-      display: none; flex-direction: column; background: #333; 
-      position: absolute; top: 60px; right: 0; padding: 1rem; 
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background: #333;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      padding: 1rem;
     }
-    .nav-links.active { display: flex; }
-    .menu-toggle { display: flex; }
+
+    .nav-links.active {
+      display: flex;
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
   }
 </style>
 
 <nav>
-  <div>Adrian HV</div>
+  <a href="/" class="brand">Adrian HV</a>
   <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
     <span></span><span></span><span></span>
   </div>
@@ -32,19 +83,17 @@
 
 <script>
   const links = [
-    ["/", "Home"],
     ["/links.html", "Links"],
     ["/articles.html", "Articles"],
     ["https://cal.com/cochleoid", "Tutoring"],
-    ["https://www.youtube.com/@AdriansAcademics", "YouTube"],
-    ["https://google.com/", "                            "]
+    ["https://www.youtube.com/@AdriansAcademics", "YouTube"]
   ];
-  
+
   const navLinks = document.querySelector('.nav-links');
-  links.forEach(link => {
+  links.forEach(([href, label]) => {
     const a = document.createElement('a');
-    a.href = link[0];
-    a.textContent = link[1];
+    a.href = href;
+    a.textContent = label;
     navLinks.appendChild(a);
   });
 </script>
