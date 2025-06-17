@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Babylonian Method for Square Roots</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background-color: #fdfdfd;
+      color: #222;
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+    }
+
+    code {
+      background: #f4f4f4;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>The Babylonian Method for Square Roots</h1>
+  <p><em>Published June 1, 2025</em></p>
+
+  <p>
+    The Babylonian method (also known as Heron’s method) is an ancient algorithm for estimating
+    square roots. Given a number \( S \), you start with a guess \( x_0 \), and then iterate using:
+  </p>
+
+  <p style="text-align: center; font-size: 1.2em;">
+    \( x_{n+1} = \frac{1}{2} \left( x_n + \frac{S}{x_n} \right) \)
+  </p>
+
+  <p>
+    For example, to approximate \( \sqrt{2} \), we might start with \( x_0 = 1 \). Applying the formula:
+  </p>
+
+  <ul>
+    <li>\( x_1 = \frac{1}{2} (1 + \frac{2}{1}) = 1.5 \)</li>
+    <li>\( x_2 = \frac{1}{2} (1.5 + \frac{2}{1.5}) = 1.416\overline{6} \)</li>
+    <li>\( x_3 = \frac{1}{2} (1.4166 + \frac{2}{1.4166}) \approx 1.4142 \)</li>
+  </ul>
+
+  <p>
+    This converges incredibly fast. In fact, after just a few iterations, the result is accurate to many decimal places.
+  </p>
+
+  <p>
+    This method is essentially Newton's method applied to the function \( f(x) = x^2 - S \).
+  </p>
+
+</body>
+</html>
