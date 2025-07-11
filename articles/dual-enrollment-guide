@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adrian’s Guide to Dual Enrollment</title>
+
+  <style>
+    body {
+      font-family: Georgia, serif;
+      line-height: 1.6;
+      max-width: 750px;
+      margin: 80px auto 2rem auto;
+      padding: 1rem;
+      background: #fdfdfd;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      color: #222;
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.75rem;
+    }
+
+    .article {
+      background: white;
+      border-left: 4px solid #444;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    code {
+      background: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #222;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #333;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        padding: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="navbar"></div>
+  <script>
+    fetch('/navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+
+        const links = [
+          ["/links.html", "Links"],
+          ["/articles.html", "Articles"],
+          ["https://cal.com/cochleoid", "Tutoring"],
+          ["https://www.youtube.com/@AdriansAcademics", "YouTube"]
+        ];
+
+        const navLinks = document.getElementById('nav-links');
+        if (navLinks) {
+          links.forEach(([href, label]) => {
+            const a = document.createElement('a');
+            a.href = href;
+            a.textContent = label;
+            a.target = href.startsWith('http') ? '_blank' : '_self';
+            navLinks.appendChild(a);
+          });
+        }
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        if (menuToggle && navLinks) {
+          menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+          });
+        }
+      });
+  </script>
+
+  <h1>Adrian’s Step-by-Step Guide to Dual Enrollment</h1>
+  <div class="article">
+    <h2>Part 1: Setting Up Your Polk State College Account</h2>
+    <ol>
+      <li>
+        First, make an account and then an application for dual enrollment at 
+        <a href="https://passport.polk.edu/Genesis/student/applogon.jsp" target="_blank">https://passport.polk.edu/Genesis/student/applogon.jsp</a>. 
+        You only need to fill the required fields. Do not stress acceptance; you’ll get in if you’re not a criminal.
+      </li>
+      <li>
+        You will first get acceptance emails, and then you should receive an email telling you your application has been processed (this will take a few days, just be patient). 
+        The latter should contain your Polk State ID and Passport password.
+      </li>
+      <li>
+        After getting your Polk ID, watch these videos and pass the quiz at the end: 
+        <a href="https://www.polk.edu/admission-aid/admissionsteps/student-orientation/" target="_blank">orientation link</a>.
+      </li>
+    </ol>
+
+    <h2>Part 2: Choosing and Adding Courses</h2>
+    <ul>
+      <li>
+        The database of open classes is at: 
+        <a href="https://polk-prod-pxes02.banner.elluciancloud.com:8090/StudentRegistrationSsb/ssb/term/termSelection?mode=search" target="_blank">
+          Polk Registration Portal
+        </a>. 
+        “Open/Available Classes” should be on by default. Search for the course or courses you want. Note down the course number and the reference number of each course (boxed in red below), you will need them later.
+      </li>
+      <li>
+        Click on the magnifying glass and check for prerequisites (see Part 4: Skipping Prerequisite Courses).
+      </li>
+      <li>
+        The course number refers to the specific course taught, while the reference number lets your counselor know which specific teacher and time you want it.
+      </li>
+    </ul>
+
+    <ol start="1">
+      <li>Go into Focus K-12 and into the three-lined menu. There is an option for “Delta Dual Enrollment.”</li>
+      <li>Provide your contact information in “Contact Info.” This makes some communications easier.</li>
+      <li>Click “Course Requests.” Add “Polk State College” as your college and choose the term (timeframe) you want. Select your guidance counselor.</li>
+      <li>Fill out the agreements. Your guardian will have to agree to some as well, in the Focus K-12 Parent Portal.</li>
+      <li>After you are done with the agreements, add your Polk State ID at the top of the screen.</li>
+      <li>
+        Click “Add a course” and provide the code/title. Marking it as optional or required doesn’t make a difference. 
+        After the course shows up in the list, add the reference number you got earlier.
+      </li>
+      <li>
+        When you are done adding your courses, email your guidance counselor, asking them to approve your courses. 
+        She will then email the college advisor and ask for their approval. When both approvals are received, move on to Part 3: Accessing Canva.
+      </li>
+    </ol>
+
+    <h2>Part 3: Accessing Canva</h2>
+    <ul>
+      <li>
+        Canva is basically the college version of Schoology. You see your college courses here at Canva: 
+        <a href="http://canvas.polk.edu/login/saml/121" target="_blank">http://canvas.polk.edu/login/saml/121</a>.
+      </li>
+      <li>
+        You may not know it, but you have a Polk State College email. You can find which it is by finding your old acceptance emails — it will be CC’ed.
+      </li>
+      <li>
+        The password to this account is your Polk State ID followed by <code>@polk</code>. Log in with this email and password.
+      </li>
+    </ul>
+
+    <h2>Part 4: Skipping Prerequisite Courses (Optional)</h2>
+    <p>
+      Some courses have ELA or Math requisites (for other requisites, you’re going to have to take them). 
+      You can skip these ELA/Math requisites by taking PERT ELA/Writing and/or PERT Math, respectively.
+    </p>
+    <p>
+      See Polk State Prerequisites in the parent folder.
+    </p>
+  </div>
+</body>
+</html>
