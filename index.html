@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Adrian HV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -49,19 +50,41 @@
       .then(response => response.text())
       .then(data => {
         document.getElementById('navbar').innerHTML = data;
+
+        // Re-run navbar logic after injection
+        const links = [
+          ["/links.html", "Links"],
+          ["/articles.html", "Articles"],
+          ["https://cal.com/cochleoid", "Tutoring"],
+          ["https://www.youtube.com/@AdriansAcademics", "YouTube"]
+        ];
+
+        const navLinks = document.getElementById('nav-links');
+        if (navLinks) {
+          links.forEach(([href, label]) => {
+            const a = document.createElement('a');
+            a.href = href;
+            a.textContent = label;
+            a.target = href.startsWith('http') ? '_blank' : '_self';
+            navLinks.appendChild(a);
+          });
+        }
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        if (menuToggle && navLinks) {
+          menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+          });
+        }
       });
   </script>
 
   <h1>Welcome to Adrian's website</h1>
 
   <button class="button" onclick="window.location.href='https://www.youtube.com/@AdrianJHV'">YouTube</button>
-
   <button class="button" onclick="location.href='articles.html'">Articles</button>
-
   <button class="button" onclick="window.location.href='https://pcsb-my.sharepoint.com/:f:/g/personal/adrianh29_mypolkschools_net/Eh3ZOMXAL2tIiv1Konwo0A4BTKlEBM4X5n59zPzEmxFvQQ?e=WzSku2'">Resources</button>
-
   <button class="button" onclick="window.location.href='https://cal.com/cochleoid/1-hour-quick-call?overlayCalendar=true'">Tutoring</button>
-
   <button class="button" onclick="location.href='links.html'">Links</button>
 
   <div class="timestamp">05/01/25 — Website launched!</div>
